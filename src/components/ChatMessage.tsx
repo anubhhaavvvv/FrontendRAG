@@ -19,25 +19,25 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, isUser }) => {
       )}
     >
       {!isUser && (
-        <Avatar className="h-8 w-8 rounded-md border border-border">
-          <AvatarFallback className="bg-secondary text-secondary-foreground rounded-md">
+        <Avatar className="h-8 w-8 rounded-full border border-border">
+          <AvatarFallback className="bg-secondary text-secondary-foreground rounded-full">
             <Bot className="h-5 w-5" />
           </AvatarFallback>
         </Avatar>
       )}
       <div
         className={cn(
-          "max-w-[70%] p-3 rounded-lg border border-border",
+          "max-w-[70%] p-3 rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.05)]",
           isUser
-            ? "bg-primary text-primary-foreground rounded-br-none" // User messages: primary color background, white text
-            : "bg-secondary text-secondary-foreground rounded-bl-none" // Bot messages: secondary color background, dark text
+            ? "bg-primary text-primary-foreground rounded-br-none" // User messages: soft indigo background, white text
+            : "bg-white text-foreground border border-[#E8E8E8] rounded-bl-none" // Bot messages: white background, light gray border, dark text
         )}
       >
         <p className="text-sm">{message}</p>
       </div>
       {isUser && (
-        <Avatar className="h-8 w-8 rounded-md border border-border">
-          <AvatarFallback className="bg-primary text-primary-foreground rounded-md">
+        <Avatar className="h-8 w-8 rounded-full border border-border">
+          <AvatarFallback className="bg-primary text-primary-foreground rounded-full">
             <User className="h-5 w-5" />
           </AvatarFallback>
         </Avatar>

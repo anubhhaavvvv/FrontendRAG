@@ -1,13 +1,11 @@
 "use client";
 
 import Chatbot from "@/components/Chatbot";
-import { MadeWithDyad } from "@/components/made-with-dyad";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-background p-4">
+    <div className="flex flex-col h-screen w-screen bg-background p-6 md:p-24">
       <Chatbot />
-      <MadeWithDyad />
     </div>
   );
 };

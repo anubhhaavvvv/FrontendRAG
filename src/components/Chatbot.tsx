@@ -69,9 +69,9 @@ const Chatbot: React.FC = () => {
   };
 
   return (
-    <Card className="w-full max-w-2xl h-[80vh] flex flex-col rounded-lg border border-border bg-card text-foreground shadow-md">
-      <CardHeader className="border-b border-border p-4 bg-card">
-        <CardTitle className="text-lg font-semibold text-center text-foreground">RAG Chatbot</CardTitle>
+    <Card className="w-full h-full flex flex-col rounded-xl border border-border bg-card text-foreground shadow-lg">
+      <CardHeader className="border-b border-[#E5E7EB] p-4 bg-card">
+        <CardTitle className="text-lg font-semibold text-center text-[#374151]">RAG Assistant</CardTitle>
       </CardHeader>
       <CardContent className="flex-1 overflow-hidden p-4 bg-background">
         <ScrollArea className="h-full pr-4">
@@ -80,12 +80,12 @@ const Chatbot: React.FC = () => {
           ))}
           {isLoading && (
             <div className="flex w-full mb-4 items-start gap-3 justify-start">
-              <Avatar className="h-8 w-8 rounded-md border border-border">
-                <AvatarFallback className="bg-secondary text-secondary-foreground rounded-md">
+              <Avatar className="h-8 w-8 rounded-full border border-border">
+                <AvatarFallback className="bg-secondary text-secondary-foreground rounded-full">
                   <Bot className="h-5 w-5" />
                 </AvatarFallback>
               </Avatar>
-              <div className="max-w-[70%] p-3 rounded-lg bg-muted text-muted-foreground rounded-bl-none">
+              <div className="max-w-[70%] p-3 rounded-xl bg-muted text-muted-foreground rounded-bl-none shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
                 <div className="flex items-center space-x-2">
                   <span className="text-sm">Processing</span>
                   <div className="h-2 w-2 bg-muted-foreground rounded-full animate-bounce [animation-delay:-0.3s]"></div>
@@ -98,22 +98,22 @@ const Chatbot: React.FC = () => {
           <div ref={messagesEndRef} />
         </ScrollArea>
       </CardContent>
-      <CardFooter className="flex p-4 border-t border-border bg-card">
+      <CardFooter className="flex p-4 border-t border-[#E5E7EB] bg-card">
         <Input
           type="text"
           placeholder="Type your message..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={handleKeyPress}
-          className="flex-1 mr-2 h-10 bg-input text-foreground border border-border focus:ring-1 focus:ring-primary rounded-md"
+          className="flex-1 mr-2 h-10 bg-white text-foreground border border-[#E2E8F0] focus:ring-0 focus:border-primary rounded-xl"
           disabled={isLoading}
         />
         <Button
           onClick={handleSendMessage}
           disabled={isLoading}
-          className="h-10 w-10 p-0 bg-primary hover:bg-primary/90 active:scale-95 transition-all duration-200 ease-in-out rounded-md"
+          className="h-10 w-10 p-0 bg-[#6B7280] hover:bg-[#4B5563] active:scale-95 transition-all duration-200 ease-in-out rounded-xl"
         >
-          <Send className="h-5 w-5 text-primary-foreground" />
+          <Send className="h-5 w-5 text-white" />
           <span className="sr-only">Send message</span>
         </Button>
       </CardFooter>
