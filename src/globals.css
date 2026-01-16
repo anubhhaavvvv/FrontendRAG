@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 30 10% 95%; /* #F5F3EE (dark cream) */
+    --background: 210 17% 95%; /* #EFF2F5 (dark slate-50) */
     --foreground: 217 19% 29%; /* #4B5563 (primary text) */
 
     --card: 30 10% 99%; /* #FDFBFA (bot bubble background) */
