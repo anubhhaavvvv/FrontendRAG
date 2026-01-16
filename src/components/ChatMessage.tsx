@@ -41,7 +41,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, isUser, timestamp })
       )}
     >
       {!isUser && (
-        <Avatar className="h-8 w-8 rounded-full bg-secondary">
+        <Avatar className="h-8 w-8 rounded-full bg-secondary glass-effect">
           <AvatarFallback className="bg-secondary text-secondary-foreground rounded-full">
             <Bot className="h-5 w-5" />
           </AvatarFallback>
@@ -49,13 +49,13 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, isUser, timestamp })
       )}
       <div
         className={cn(
-          "max-w-[70%] p-3 rounded-lg neumorphic-shadow",
+          "max-w-[70%] p-3 rounded-lg glass-effect glassmorphism-shadow",
           isUser
             ? "bg-primary text-primary-foreground rounded-br-none" // User messages: card background, primary text
             : "bg-secondary text-secondary-foreground rounded-bl-none" // Bot messages: surface background, primary text
         )}
       >
-        <p className="text-sm flex flex-wrap items-center">
+        <p className="text-[13px] flex flex-wrap items-center">
           {renderMessageWithCitations(message)}
         </p>
         <span className={cn("block text-[12px] text-muted-foreground mt-1 font-normal", isUser ? "text-right" : "text-left")}>
@@ -63,7 +63,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, isUser, timestamp })
         </span>
       </div>
       {isUser && (
-        <Avatar className="h-8 w-8 rounded-full bg-primary">
+        <Avatar className="h-8 w-8 rounded-full bg-primary glass-effect">
           <AvatarFallback className="bg-primary text-primary-foreground rounded-full">
             <User className="h-5 w-5" />
           </AvatarFallback>

@@ -85,9 +85,9 @@ const Chatbot: React.FC = () => {
   };
 
   return (
-    <Card className="w-full h-full flex flex-col rounded-[var(--radius)] bg-card text-foreground neumorphic-shadow">
-      <CardHeader className="flex flex-row items-center justify-center h-[60px] p-4 bg-surface text-foreground rounded-t-[calc(var(--radius)-2px)] border-b border-border">
-        <CardTitle className="text-lg font-semibold">AI Assistant</CardTitle>
+    <Card className="w-full h-full flex flex-col rounded-[var(--radius)] bg-[var(--card)] text-foreground glass-effect glassmorphism-shadow">
+      <CardHeader className="flex flex-row items-center justify-center h-[60px] p-4 bg-surface text-foreground rounded-t-[calc(var(--radius)-2px)] border-b border-border glass-effect">
+        <CardTitle className="text-[14px] font-bold">AI Assistant</CardTitle>
       </CardHeader>
       <CardContent className="flex-1 overflow-hidden p-4 md:p-6 bg-background">
         <ScrollArea className="h-full pr-4">
@@ -96,14 +96,14 @@ const Chatbot: React.FC = () => {
           ))}
           {isLoading && (
             <div className="flex w-full mb-4 items-start gap-3 justify-start">
-              <Avatar className="h-8 w-8 rounded-full bg-secondary">
+              <Avatar className="h-8 w-8 rounded-full bg-secondary glass-effect">
                 <AvatarFallback className="bg-secondary text-secondary-foreground rounded-full">
                   <Bot className="h-5 w-5" />
                 </AvatarFallback>
               </Avatar>
-              <div className="max-w-[70%] p-3 rounded-lg bg-secondary text-secondary-foreground rounded-bl-none neumorphic-shadow">
+              <div className="max-w-[70%] p-3 rounded-lg bg-secondary text-secondary-foreground rounded-bl-none glass-effect glassmorphism-shadow">
                 <div className="flex items-center space-x-2">
-                  <span className="text-sm">Typing</span>
+                  <span className="text-[13px]">Typing</span>
                   <div className="h-2 w-2 bg-muted-foreground rounded-full animate-bounce [animation-delay:-0.3s]"></div>
                   <div className="h-2 w-2 bg-muted-foreground rounded-full animate-bounce [animation-delay:-0.15s]"></div>
                   <div className="h-2 w-2 bg-muted-foreground rounded-full animate-bounce"></div>
@@ -114,20 +114,20 @@ const Chatbot: React.FC = () => {
           <div ref={messagesEndRef} />
         </ScrollArea>
       </CardContent>
-      <CardFooter className="sticky bottom-0 flex p-4 h-[70px] bg-surface rounded-b-[calc(var(--radius)-2px)] border-t border-border">
+      <CardFooter className="sticky bottom-0 flex p-4 h-[70px] bg-surface rounded-b-[calc(var(--radius)-2px)] border-t border-border glass-effect">
         <Input
           type="text"
           placeholder="Type your message..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={handleKeyPress}
-          className="flex-1 mr-2 h-10 bg-input text-foreground border-none focus:ring-2 focus:ring-accent focus:ring-offset-0 rounded-lg"
+          className="flex-1 mr-2 h-10 bg-input text-foreground border border-border focus:ring-2 focus:ring-accent focus:ring-offset-0 rounded-lg"
           disabled={isLoading}
         />
         <Button
           onClick={handleSendMessage}
           disabled={isLoading}
-          className="h-10 w-10 p-0 bg-accent hover:bg-accent/80 active:scale-95 transition-all duration-200 ease-in-out rounded-lg hover:scale-[1.02] hover:shadow-sm"
+          className="h-10 w-10 p-0 bg-accent opacity-60 hover:opacity-80 active:scale-95 transition-all duration-200 ease-in-out rounded-lg hover:scale-[1.02] hover:shadow-sm"
         >
           <Send className="h-5 w-5 text-accent-foreground" />
           <span className="sr-only">Send message</span>
