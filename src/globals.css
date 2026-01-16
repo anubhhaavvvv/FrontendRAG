@@ -14,11 +14,11 @@
     --foreground: #374151;
     --muted-foreground: #6B7280;
 
-    /* Message colors */
-    --primary: #4F46E5;
+    /* Message colors - Updated to light brown */
+    --primary: #D4A574; /* Light brown for user messages */
     --primary-foreground: #FFFFFF;
 
-    --secondary: #FFFFFF;
+    --secondary: #F5F1EB; /* Very light brown for bot messages */
     --secondary-foreground: #475467;
 
     /* Accent colors */
