@@ -35,7 +35,7 @@ const Chatbot: React.FC = () => {
     setInput("");
     setIsLoading(true);
 
-    const loadingToastId = showLoading("Thinking...");
+    const loadingToastId = showLoading("Executing command...");
 
     try {
       const response = await fetch("http://localhost:8000/chat", {
@@ -55,7 +55,7 @@ const Chatbot: React.FC = () => {
       setMessages((prevMessages) => [...prevMessages, botMessage]);
     } catch (error) {
       console.error("Error sending message:", error);
-      showError("Failed to get a response from the chatbot. Please try again.");
+      showError("Error: Failed to execute command. Please try again.");
     } finally {
       setIsLoading(false);
       dismissToast(loadingToastId);
@@ -69,28 +69,28 @@ const Chatbot: React.FC = () => {
   };
 
   return (
-    <Card className="w-full max-w-2xl h-[80vh] flex flex-col shadow-2xl rounded-lg border border-primary/30 bg-background/20 backdrop-blur-xl transition-all duration-300 hover:shadow-primary/20">
-      <CardHeader className="border-b border-primary/20 p-4 bg-card/20">
-        <CardTitle className="text-lg font-semibold text-center text-foreground">RAG Chatbot</CardTitle>
+    <Card className="w-full max-w-2xl h-[80vh] flex flex-col rounded-none border-2 border-primary shadow-lg shadow-primary/50 bg-black">
+      <CardHeader className="border-b-2 border-primary p-3 bg-gray-950">
+        <CardTitle className="text-lg font-bold text-primary text-center">
+          <span className="text-green-400">user@terminal</span>:<span className="text-blue-400">~/chatbot</span>$
+        </CardTitle>
       </CardHeader>
-      <CardContent className="flex-1 overflow-hidden p-4 bg-background/10">
+      <CardContent className="flex-1 overflow-hidden p-4 bg-black text-green-400">
         <ScrollArea className="h-full pr-4">
           {messages.map((msg, index) => (
             <ChatMessage key={index} message={msg.text} isUser={msg.isUser} />
           ))}
           {isLoading && (
-            <div className="flex w-full mb-4 items-start gap-3 justify-start">
-              <Avatar className="h-8 w-8">
-                <AvatarFallback className="bg-muted">
-                  <Bot className="h-5 w-5 text-muted-foreground" />
+            <div className="flex w-full mb-2 items-start gap-2 justify-start text-green-400">
+              <Avatar className="h-6 w-6 rounded-none">
+                <AvatarFallback className="bg-gray-800 text-green-400 rounded-none text-xs">
+                  <Bot className="h-4 w-4" />
                 </AvatarFallback>
               </Avatar>
-              <div className="max-w-[70%] p-3 rounded-xl bg-muted text-muted-foreground rounded-bl-none">
-                <div className="flex items-center space-x-2">
-                  <span className="text-sm">🤔 Thinking</span>
-                  <div className="h-2 w-2 bg-muted-foreground rounded-full animate-bounce [animation-delay:-0.3s]"></div>
-                  <div className="h-2 w-2 bg-muted-foreground rounded-full animate-bounce [animation-delay:-0.15s]"></div>
-                  <div className="h-2 w-2 bg-muted-foreground rounded-full animate-bounce"></div>
+              <div className="p-1">
+                <div className="flex items-center space-x-1">
+                  <span className="text-sm">Processing...</span>
+                  <span className="animate-pulse">_</span>
                 </div>
               </div>
             </div>
@@ -98,23 +98,24 @@ const Chatbot: React.FC = () => {
           <div ref={messagesEndRef} />
         </ScrollArea>
       </CardContent>
-      <CardFooter className="flex p-4 border-t border-primary/20 bg-card/20">
+      <CardFooter className="flex p-3 border-t-2 border-primary bg-gray-950">
+        <span className="text-green-400 mr-2">$&gt;</span>
         <Input
           type="text"
-          placeholder="Type your message..."
+          placeholder="Type command..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={handleKeyPress}
-          className="flex-1 mr-2 h-10 bg-input/40 text-foreground border border-primary/30 focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all duration-200"
+          className="flex-1 h-8 bg-input text-foreground border-0 focus:ring-0 focus:outline-none rounded-none px-2 py-1"
           disabled={isLoading}
         />
         <Button
           onClick={handleSendMessage}
           disabled={isLoading}
-          className="h-10 w-10 p-0 bg-primary hover:bg-primary/80 active:scale-95 transition-all duration-200 ease-in-out"
+          className="h-8 w-8 p-0 bg-primary hover:bg-primary/80 active:scale-95 transition-all duration-100 ease-in-out rounded-none ml-2"
         >
-          <Send className="h-5 w-5 text-primary-foreground" />
-          <span className="sr-only">Send message</span>
+          <Send className="h-4 w-4 text-primary-foreground" />
+          <span className="sr-only">Send command</span>
         </Button>
       </CardFooter>
     </Card>

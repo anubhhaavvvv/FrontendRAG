@@ -4,44 +4,44 @@
 
 @layer base {
   :root {
-    --background: 220 10% 3%; /* Very deep, rich dark blue/black */
-    --foreground: 210 40% 98%; /* Off-white */
+    --background: 0 0% 0%; /* Pure black */
+    --foreground: 120 60% 70%; /* Vibrant terminal green */
 
-    --card: 220 10% 3%; /* Same as background for subtle glass effect */
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 0%; /* Pure black for card background */
+    --card-foreground: 120 60% 70%;
 
-    --popover: 220 10% 3%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 0%;
+    --popover-foreground: 120 60% 70%;
 
-    --primary: 220 70% 40%; /* A more subdued, professional blue/purple */
-    --primary-foreground: 0 0% 100%; /* White */
+    --primary: 120 60% 50%; /* A slightly darker green for primary actions */
+    --primary-foreground: 0 0% 100%; /* White text on primary */
 
-    --secondary: 217.2 32.6% 17.5%; /* Dark gray */
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 10%; /* Dark gray for secondary elements */
+    --secondary-foreground: 120 60% 70%;
 
-    --muted: 217.2 32.6% 17.5%; /* Dark gray */
-    --muted-foreground: 215 20.2% 65.1%; /* Lighter gray */
+    --muted: 0 0% 10%; /* Dark gray for muted elements */
+    --muted-foreground: 120 30% 50%; /* Muted green */
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 0 0% 10%;
+    --accent-foreground: 120 60% 70%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 62.8% 30.6%; /* Red for errors */
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%; /* Dark gray border */
-    --input: 217.2 32.6% 17.5%; /* Dark gray input */
-    --ring: 212.7 26.8% 83.9%;
+    --border: 120 60% 30%; /* Darker green border */
+    --input: 0 0% 5%; /* Very dark gray for input background */
+    --ring: 120 60% 50%; /* Primary green for focus ring */
 
-    --radius: 0.5rem;
+    --radius: 0.25rem; /* Sharper corners */
 
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-background: 0 0% 0%;
+    --sidebar-foreground: 120 60% 70%;
+    --sidebar-primary: 120 60% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 120 60% 70%;
+    --sidebar-border: 120 60% 30%;
+    --sidebar-ring: 120 60% 50%;
   }
 }
 
@@ -51,6 +51,6 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-mono; /* Apply monospace font */
   }
 }
