@@ -41,8 +41,8 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, isUser, timestamp })
       )}
     >
       {!isUser && (
-        <Avatar className="h-8 w-8 rounded-lg border border-border">
-          <AvatarFallback className="bg-secondary text-secondary-foreground rounded-lg">
+        <Avatar className="h-8 w-8 rounded-full border border-border">
+          <AvatarFallback className="bg-secondary text-secondary-foreground rounded-full">
             <Bot className="h-5 w-5" />
           </AvatarFallback>
         </Avatar>
@@ -52,19 +52,19 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, isUser, timestamp })
           "max-w-[70%] p-3 rounded-lg shadow-[0_1px_3px_rgba(0,0,0,0.05)]",
           isUser
             ? "bg-primary text-primary-foreground rounded-br-none" // User messages: soft indigo background, white text
-            : "bg-secondary text-secondary-foreground border border-[#E0DFD8] rounded-bl-none" // Bot messages: white background, light gray border, dark text
+            : "bg-secondary text-secondary-foreground border border-transparent rounded-bl-none shadow-sm shadow-left" // Bot messages: white background, light gray border, dark text
         )}
       >
         <p className="text-sm flex flex-wrap items-center">
           {renderMessageWithCitations(message)}
         </p>
-        <span className={cn("block text-[12px] text-muted-foreground mt-1", isUser ? "text-right" : "text-left")}>
+        <span className={cn("block text-[12px] text-muted-foreground mt-1 font-medium", isUser ? "text-right" : "text-left")}>
           {timestamp}
         </span>
       </div>
       {isUser && (
-        <Avatar className="h-8 w-8 rounded-lg border border-border">
-          <AvatarFallback className="bg-primary text-primary-foreground rounded-lg">
+        <Avatar className="h-8 w-8 rounded-full border border-border">
+          <AvatarFallback className="bg-primary text-primary-foreground rounded-full">
             <User className="h-5 w-5" />
           </AvatarFallback>
         </Avatar>
