@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import ChatMessage from "./ChatMessage";
-import { Send, Bot } from "lucide-react";
+import { Send, Bot, Settings } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { showError, showLoading, dismissToast } from "@/utils/toast";
 
@@ -51,11 +51,14 @@ const Chatbot: React.FC = () => {
       }
 
       const data = await response.json();
-      const botMessage: Message = { text: data.response, isUser: false };
+      const botResponseText = data.response || "No answer found."; // Handle "No answer found"
+      const botMessage: Message = { text: botResponseText, isUser: false };
       setMessages((prevMessages) => [...prevMessages, botMessage]);
     } catch (error) {
       console.error("Error sending message:", error);
       showError("Failed to get a response from the chatbot. Please try again.");
+      const errorMessage: Message = { text: "Failed to get a response from the chatbot. Please try again.", isUser: false };
+      setMessages((prevMessages) => [...prevMessages, errorMessage]);
     } finally {
       setIsLoading(false);
       dismissToast(loadingToastId);
@@ -70,8 +73,12 @@ const Chatbot: React.FC = () => {
 
   return (
     <Card className="w-full h-full flex flex-col rounded-xl border border-border bg-card text-foreground shadow-lg">
-      <CardHeader className="border-b border-border p-4 bg-card">
-        <CardTitle className="text-lg font-semibold text-center text-foreground">RAG Assistant</CardTitle>
+      <CardHeader className="flex flex-row items-center justify-between h-14 border-b border-[#E5E7EB] p-4 bg-card">
+        <CardTitle className="text-lg font-semibold text-[#475467]">RAG Assistant</CardTitle>
+        <Button variant="ghost" size="icon" className="h-8 w-8 text-[#475467] hover:bg-muted">
+          <Settings className="h-5 w-5" />
+          <span className="sr-only">Settings</span>
+        </Button>
       </CardHeader>
       <CardContent className="flex-1 overflow-hidden p-4 bg-background">
         <ScrollArea className="h-full pr-4">
@@ -85,9 +92,9 @@ const Chatbot: React.FC = () => {
                   <Bot className="h-5 w-5" />
                 </AvatarFallback>
               </Avatar>
-              <div className="max-w-[70%] p-3 rounded-xl bg-muted text-muted-foreground rounded-bl-none shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
+              <div className="max-w-[70%] p-3 rounded-xl bg-secondary text-secondary-foreground rounded-bl-none shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
                 <div className="flex items-center space-x-2">
-                  <span className="text-sm">Processing</span>
+                  <span className="text-sm">Typing</span>
                   <div className="h-2 w-2 bg-muted-foreground rounded-full animate-bounce [animation-delay:-0.3s]"></div>
                   <div className="h-2 w-2 bg-muted-foreground rounded-full animate-bounce [animation-delay:-0.15s]"></div>
                   <div className="h-2 w-2 bg-muted-foreground rounded-full animate-bounce"></div>
@@ -98,22 +105,22 @@ const Chatbot: React.FC = () => {
           <div ref={messagesEndRef} />
         </ScrollArea>
       </CardContent>
-      <CardFooter className="flex p-4 border-t border-border bg-card">
+      <CardFooter className="sticky bottom-0 flex p-4 h-16 border-t border-[#E5E7EB] bg-card">
         <Input
           type="text"
           placeholder="Type your message..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={handleKeyPress}
-          className="flex-1 mr-2 h-10 bg-input text-foreground border border-border focus:ring-0 focus:border-primary rounded-xl"
+          className="flex-1 mr-2 h-10 bg-white text-foreground border border-[#E2E8F0] focus:ring-0 focus:border-primary rounded-xl"
           disabled={isLoading}
         />
         <Button
           onClick={handleSendMessage}
           disabled={isLoading}
-          className="h-10 w-10 p-0 bg-accent hover:bg-accent/90 active:scale-95 transition-all duration-200 ease-in-out rounded-xl"
+          className="h-10 w-10 p-0 bg-[#475467] hover:bg-[#3730A3] active:scale-95 transition-all duration-200 ease-in-out rounded-xl"
         >
-          <Send className="h-5 w-5 text-accent-foreground" />
+          <Send className="h-5 w-5 text-white" />
           <span className="sr-only">Send message</span>
         </Button>
       </CardFooter>
