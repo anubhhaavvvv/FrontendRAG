@@ -4,44 +4,43 @@
 
 @layer base {
   :root {
-    --background: 240 10% 9%; /* Base for gradient #0F0F23 */
-    --foreground: 0 0% 100%; /* White */
+    --background: 210 3% 7%; /* #121212 (Base) */
+    --surface: 210 3% 12%; /* #1E1E1E (Surface) */
+    --card: 210 3% 18%; /* #2D2D2D (Card) */
+    --glass: 0 0% 100% / 0.05; /* rgba(255,255,255,0.05) */
 
-    --card: 240 5% 23%; /* #343541 (bot bubble background) */
-    --card-foreground: 240 10% 89%; /* #D9D9E3 (bot text) */
+    --foreground: 210 10% 90%; /* #E5E7EB (Primary Text) */
+    --muted-foreground: 210 10% 95%; /* #F3F4F6 (Secondary Text) */
 
-    --popover: 240 5% 23%;
-    --popover-foreground: 240 10% 89%;
+    --primary: 210 3% 18%; /* #2D2D2D (User bubble, same as card for consistency) */
+    --primary-foreground: 210 10% 90%; /* #E5E7EB */
 
-    --primary: 240 5% 27%; /* #444654 (user message bubble) */
-    --primary-foreground: 0 0% 100%; /* White */
+    --secondary: 210 3% 12%; /* #1E1E1E (Bot bubble, same as surface) */
+    --secondary-foreground: 210 10% 90%; /* #E5E7EB */
 
-    --secondary: 240 5% 23%; /* #343541 (bot message bubble background) */
-    --secondary-foreground: 240 10% 89%; /* #D9D9E3 (bot text) */
-
-    --muted: 240 5% 56%; /* #8E8E9E (for typing dots, timestamps) */
-    --muted-foreground: 240 5% 56%; /* #8E8E9E */
-
-    --accent: 165 82% 35%; /* #10A37F (focus ring color) */
+    --accent: 150 70% 39%; /* #10B981 (Emerald Green) */
     --accent-foreground: 0 0% 100%; /* White */
+
+    --popover: 210 3% 18%;
+    --popover-foreground: 210 10% 90%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 240 5% 13%; /* #202123 (subtle borders) */
-    --input: 240 5% 25%; /* #40414F (input background) */
-    --ring: 165 82% 35%; /* #10A37F (focus ring) */
+    --border: 210 3% 12%; /* #1E1E1E */
+    --input: 210 3% 12%; /* #1E1E1E */
+    --ring: 150 70% 39%; /* #10B981 */
 
-    --radius: 0.5rem; /* 8px for rounded-lg */
+    --radius: 1.5rem; /* 24px global */
 
-    --sidebar-background: 240 10% 9%;
-    --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 240 5% 27%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 165 82% 35%;
+    --sidebar-background: 210 3% 7%;
+    --sidebar-foreground: 210 10% 90%;
+    --sidebar-primary: 210 3% 18%;
+    --sidebar-primary-foreground: 210 10% 90%;
+    --sidebar-accent: 150 70% 39%;
     --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 240 5% 13%;
-    --sidebar-ring: 165 82% 35%;
+    --sidebar-border: 210 3% 12%;
+    --sidebar-ring: 150 70% 39%;
   }
 }
 
@@ -51,7 +50,12 @@
   }
 
   body {
-    @apply text-foreground font-['SF_Mono_Regular','JetBrains_Mono','ui-monospace','SFMono-Regular','Menlo','Monaco','Consolas','Liberation_Mono','Courier_New',monospace] text-[15px] leading-[1.6] antialiased h-screen overflow-hidden;
-    background: linear-gradient(180deg, #0F0F23 0%, #1A1B2E 100%);
+    @apply bg-background text-foreground font-['SF_Mono_Regular','JetBrains_Mono','ui-monospace','SFMono-Regular','Menlo','Monaco','Consolas','Liberation_Mono','Courier_New',monospace] text-[15px] leading-[1.6] antialiased h-screen overflow-hidden;
+  }
+}
+
+@layer utilities {
+  .neumorphic-shadow {
+    box-shadow: 8px 8px 16px rgba(0,0,0,0.4), -8px -8px 16px rgba(255,255,255,0.02);
   }
 }

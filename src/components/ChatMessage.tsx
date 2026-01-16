@@ -41,18 +41,18 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, isUser, timestamp })
       )}
     >
       {!isUser && (
-        <Avatar className="h-8 w-8 rounded-full bg-card">
-          <AvatarFallback className="bg-card text-card-foreground rounded-full">
+        <Avatar className="h-8 w-8 rounded-full bg-secondary">
+          <AvatarFallback className="bg-secondary text-secondary-foreground rounded-full">
             <Bot className="h-5 w-5" />
           </AvatarFallback>
         </Avatar>
       )}
       <div
         className={cn(
-          "max-w-[70%] p-3 rounded-lg",
+          "max-w-[70%] p-3 rounded-lg neumorphic-shadow",
           isUser
-            ? "bg-primary text-primary-foreground" // User messages: dark gray background, white text
-            : "bg-secondary text-secondary-foreground" // Bot messages: slightly lighter dark gray background, light gray text
+            ? "bg-primary text-primary-foreground rounded-br-none" // User messages: card background, primary text
+            : "bg-secondary text-secondary-foreground rounded-bl-none" // Bot messages: surface background, primary text
         )}
       >
         <p className="text-sm flex flex-wrap items-center">
