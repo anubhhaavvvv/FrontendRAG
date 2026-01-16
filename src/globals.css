@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    --background: 30 10% 97%; /* #FEF9EF (warm cream) */
-    --foreground: 217 19% 20%; /* #475467 (dark text) */
+    --background: 210 17% 97%; /* #F8FAFC (slate-50) */
+    --foreground: 217 19% 20%; /* #475467 (dark text, used for general foreground) */
 
     --card: 0 0% 100%; /* #FFFFFF */
     --card-foreground: 217 19% 20%;
@@ -13,35 +13,35 @@
     --popover: 0 0% 100%;
     --popover-foreground: 217 19% 20%;
 
-    --primary: 239 70% 60%; /* #4F46E5 (soft indigo) */
+    --primary: 217 91% 59%; /* #3B82F6 (blue for user messages) */
     --primary-foreground: 0 0% 100%; /* White */
 
-    --secondary: 210 22% 93%; /* #E8E8E8 (light gray for bot border) */
-    --secondary-foreground: 217 19% 20%; /* #475467 */
+    --secondary: 210 20% 95%; /* #F1F5F9 (slate-100 for bot messages) */
+    --secondary-foreground: 217 19% 20%; /* #475467 (text for bot messages) */
 
-    --muted: 210 22% 93%; /* #E8E8E8 */
+    --muted: 210 20% 95%; /* #F1F5F9 */
     --muted-foreground: 217 19% 20%; /* #475467 */
 
-    --accent: 217 10% 45%; /* #6B7280 (slate gray for buttons) */
+    --accent: 217 19% 20%; /* #475467 (slate gray for buttons/accents) */
     --accent-foreground: 0 0% 100%; /* White */
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 210 20% 92%; /* #E5E7EB (thin divider line) */
+    --border: 210 20% 85%; /* #CBD5E1 (slate-300 for borders) */
     --input: 0 0% 100%; /* #FFFFFF */
-    --ring: 239 70% 60%; /* #4F46E5 */
+    --ring: 217 91% 59%; /* #3B82F6 */
 
     --radius: 0.75rem; /* rounded-xl */
 
-    --sidebar-background: 30 10% 95%;
-    --sidebar-foreground: 20 14.3% 4.1%;
-    --sidebar-primary: 25 95% 50%;
+    --sidebar-background: 210 17% 97%;
+    --sidebar-foreground: 217 19% 20%;
+    --sidebar-primary: 217 91% 59%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 30 10% 90%;
-    --sidebar-accent-foreground: 20 14.3% 4.1%;
-    --sidebar-border: 30 10% 85%;
-    --sidebar-ring: 25 95% 50%;
+    --sidebar-accent: 217 19% 20%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 210 20% 85%;
+    --sidebar-ring: 217 91% 59%;
   }
 }
 

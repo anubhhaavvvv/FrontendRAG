@@ -29,8 +29,8 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, isUser }) => {
         className={cn(
           "max-w-[70%] p-3 rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.05)]",
           isUser
-            ? "bg-primary text-primary-foreground rounded-br-none" // User messages: soft indigo background, white text
-            : "bg-white text-foreground border border-[#E8E8E8] rounded-bl-none" // Bot messages: white background, light gray border, dark text
+            ? "bg-primary text-primary-foreground rounded-br-none" // User messages: blue background, white text
+            : "bg-secondary text-secondary-foreground border border-border rounded-bl-none" // Bot messages: light gray background, dark text, border
         )}
       >
         <p className="text-sm">{message}</p>
