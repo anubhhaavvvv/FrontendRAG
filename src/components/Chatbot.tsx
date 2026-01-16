@@ -8,7 +8,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import ChatMessage from "./ChatMessage";
 import { Send, Bot } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { showError, showLoading, dismissToast } from "@/utils/toast";
+import { showError, showSuccess, showLoading, dismissToast } from "@/utils/toast";
 
 interface Message {
   text: string;
@@ -21,6 +21,9 @@ const Chatbot: React.FC = () => {
   const [input, setInput] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Get the API base URL from environment variables
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -40,10 +43,10 @@ const Chatbot: React.FC = () => {
     setInput("");
     setIsLoading(true);
 
-    const loadingToastId = showLoading("Processing...");
+    const loadingToastId = showLoading("Processing your message...");
 
     try {
-      const response = await fetch("http://localhost:8000/chat", {
+      const response = await fetch(`${API_BASE_URL}/chat`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -56,18 +59,23 @@ const Chatbot: React.FC = () => {
       }
 
       const data = await response.json();
-      const botResponseText = data.response || "No answer found.";
-      const botMessage: Message = {
-        text: botResponseText,
-        isUser: false,
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      };
-      setMessages((prevMessages) => [...prevMessages, botMessage]);
+
+      if (data.response) {
+        const botMessage: Message = {
+          text: data.response,
+          isUser: false,
+          timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        };
+        setMessages((prevMessages) => [...prevMessages, botMessage]);
+        showSuccess("Response received successfully");
+      } else {
+        throw new Error("No response from server");
+      }
     } catch (error) {
       console.error("Error sending message:", error);
-      showError("Failed to get a response from the chatbot. Please try again.");
+      showError("Failed to get a response. Please try again.");
       const errorMessage: Message = {
-        text: "Failed to get a response from the chatbot. Please try again.",
+        text: "Sorry, I couldn't process your request. Please try again.",
         isUser: false,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       };
@@ -105,7 +113,7 @@ const Chatbot: React.FC = () => {
                 </Avatar>
                 <div className="max-w-[70%] p-3 rounded-lg bg-secondary text-secondary-foreground border border-border message-shadow">
                   <div className="flex items-center space-x-2">
-                    <span className="text-[13px]">Typing</span>
+                    <span className="text-[13px]">Thinking</span>
                     <div className="h-2 w-2 bg-muted-foreground rounded-full animate-bounce [animation-delay:-0.3s]"></div>
                     <div className="h-2 w-2 bg-muted-foreground rounded-full animate-bounce [animation-delay:-0.15s]"></div>
                     <div className="h-2 w-2 bg-muted-foreground rounded-full animate-bounce"></div>
