@@ -4,43 +4,43 @@
 
 @layer base {
   :root {
-    --background: 30 10% 97%; /* #FEF9EF (warm cream) */
-    --foreground: 217 19% 20%; /* #475467 (dark gray text) */
+    --background: 30 10% 95%; /* #F5F3EE (dark cream) */
+    --foreground: 217 19% 29%; /* #4B5563 (primary text) */
 
-    --card: 0 0% 100%; /* #FFFFFF */
-    --card-foreground: 217 19% 20%;
+    --card: 30 10% 99%; /* #FDFBFA (bot bubble background) */
+    --card-foreground: 217 19% 29%; /* #4B5563 */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 217 19% 20%;
+    --popover: 30 10% 99%;
+    --popover-foreground: 217 19% 29%;
 
-    --primary: 239 70% 60%; /* #4F46E5 (soft indigo for user messages) */
+    --primary: 239 70% 60%; /* #4F46E5 (soft indigo for user messages, accent) */
     --primary-foreground: 0 0% 100%; /* White */
 
-    --secondary: 0 0% 100%; /* #FFFFFF (for bot message bubbles) */
-    --secondary-foreground: 217 19% 20%; /* #475467 (text for bot messages) */
+    --secondary: 30 10% 99%; /* #FDFBFA (bot bubble background, same as card) */
+    --secondary-foreground: 217 19% 29%; /* #4B5563 (bot text) */
 
-    --muted: 210 20% 95%; /* #F1F5F9 (for loading dots, etc.) */
-    --muted-foreground: 217 19% 20%; /* #475467 */
+    --muted: 217 19% 64%; /* #9CA3AF (for typing dots, timestamps) */
+    --muted-foreground: 217 19% 64%; /* #9CA3AF */
 
-    --accent: 217 19% 20%; /* #475467 (slate gray for buttons) */
+    --accent: 239 70% 60%; /* #4F46E5 (button background) */
     --accent-foreground: 0 0% 100%; /* White */
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 210 20% 92%; /* #E5E7EB (thin divider line) */
-    --input: 0 0% 100%; /* #FFFFFF */
-    --ring: 239 70% 60%; /* #4F46E5 */
+    --border: 30 10% 87%; /* #E0DFD8 (bot bubble border) */
+    --input: 30 10% 97%; /* #FAF9F6 (input background) */
+    --ring: 239 70% 60%; /* #4F46E5 (focus ring) */
 
-    --radius: 0.75rem; /* rounded-xl */
+    --radius: 1rem; /* 16px for rounded-lg */
 
-    --sidebar-background: 30 10% 97%;
-    --sidebar-foreground: 217 19% 20%;
+    --sidebar-background: 30 10% 95%;
+    --sidebar-foreground: 217 19% 29%;
     --sidebar-primary: 239 70% 60%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 217 19% 20%;
+    --sidebar-accent: 239 70% 60%;
     --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 210 20% 92%;
+    --sidebar-border: 30 10% 87%;
     --sidebar-ring: 239 70% 60%;
   }
 }
@@ -51,6 +51,6 @@
   }
 
   body {
-    @apply bg-background text-foreground font-['Inter'] text-[14px] leading-[1.6];
+    @apply bg-background text-foreground font-['Inter'] text-[14px] leading-[1.6] antialiased h-screen overflow-hidden;
   }
 }

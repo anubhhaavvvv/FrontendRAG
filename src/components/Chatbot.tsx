@@ -13,6 +13,7 @@ import { showError, showLoading, dismissToast } from "@/utils/toast";
 interface Message {
   text: string;
   isUser: boolean;
+  timestamp: string;
 }
 
 const Chatbot: React.FC = () => {
@@ -30,7 +31,11 @@ const Chatbot: React.FC = () => {
   const handleSendMessage = async () => {
     if (input.trim() === "") return;
 
-    const userMessage: Message = { text: input, isUser: true };
+    const userMessage: Message = {
+      text: input,
+      isUser: true,
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+    };
     setMessages((prevMessages) => [...prevMessages, userMessage]);
     setInput("");
     setIsLoading(true);
@@ -52,12 +57,20 @@ const Chatbot: React.FC = () => {
 
       const data = await response.json();
       const botResponseText = data.response || "No answer found."; // Handle "No answer found"
-      const botMessage: Message = { text: botResponseText, isUser: false };
+      const botMessage: Message = {
+        text: botResponseText,
+        isUser: false,
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      };
       setMessages((prevMessages) => [...prevMessages, botMessage]);
     } catch (error) {
       console.error("Error sending message:", error);
       showError("Failed to get a response from the chatbot. Please try again.");
-      const errorMessage: Message = { text: "Failed to get a response from the chatbot. Please try again.", isUser: false };
+      const errorMessage: Message = {
+        text: "Failed to get a response from the chatbot. Please try again.",
+        isUser: false,
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      };
       setMessages((prevMessages) => [...prevMessages, errorMessage]);
     } finally {
       setIsLoading(false);
@@ -72,27 +85,27 @@ const Chatbot: React.FC = () => {
   };
 
   return (
-    <Card className="w-full h-full flex flex-col rounded-xl border border-border bg-card text-foreground shadow-lg">
-      <CardHeader className="flex flex-row items-center justify-between h-14 border-b border-[#E5E7EB] p-4 bg-card">
-        <CardTitle className="text-lg font-semibold text-[#475467]">RAG Assistant</CardTitle>
-        <Button variant="ghost" size="icon" className="h-8 w-8 text-[#475467] hover:bg-muted">
+    <Card className="w-full h-full flex flex-col rounded-lg border border-border bg-card text-foreground shadow-lg">
+      <CardHeader className="flex flex-row items-center justify-between h-[60px] border-b border-[#E5E4E2] p-4 bg-[#F8F7F4]">
+        <CardTitle className="text-lg font-semibold text-[#374151]">RAG Assistant</CardTitle>
+        <Button variant="ghost" size="icon" className="h-8 w-8 text-[#4B5563] hover:bg-muted">
           <Settings className="h-5 w-5" />
           <span className="sr-only">Settings</span>
         </Button>
       </CardHeader>
-      <CardContent className="flex-1 overflow-hidden p-4 bg-background">
+      <CardContent className="flex-1 overflow-hidden p-4 md:p-6 bg-background">
         <ScrollArea className="h-full pr-4">
           {messages.map((msg, index) => (
-            <ChatMessage key={index} message={msg.text} isUser={msg.isUser} />
+            <ChatMessage key={index} message={msg.text} isUser={msg.isUser} timestamp={msg.timestamp} />
           ))}
           {isLoading && (
             <div className="flex w-full mb-4 items-start gap-3 justify-start">
-              <Avatar className="h-8 w-8 rounded-full border border-border">
-                <AvatarFallback className="bg-secondary text-secondary-foreground rounded-full">
+              <Avatar className="h-8 w-8 rounded-lg border border-border">
+                <AvatarFallback className="bg-secondary text-secondary-foreground rounded-lg">
                   <Bot className="h-5 w-5" />
                 </AvatarFallback>
               </Avatar>
-              <div className="max-w-[70%] p-3 rounded-xl bg-secondary text-secondary-foreground rounded-bl-none shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
+              <div className="max-w-[70%] p-3 rounded-lg bg-secondary text-secondary-foreground rounded-bl-none shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
                 <div className="flex items-center space-x-2">
                   <span className="text-sm">Typing</span>
                   <div className="h-2 w-2 bg-muted-foreground rounded-full animate-bounce [animation-delay:-0.3s]"></div>
@@ -105,22 +118,22 @@ const Chatbot: React.FC = () => {
           <div ref={messagesEndRef} />
         </ScrollArea>
       </CardContent>
-      <CardFooter className="sticky bottom-0 flex p-4 h-16 border-t border-[#E5E7EB] bg-card">
+      <CardFooter className="sticky bottom-0 flex p-4 h-[70px] border-t border-[#E5E4E2] bg-[#FAF9F6]">
         <Input
           type="text"
           placeholder="Type your message..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={handleKeyPress}
-          className="flex-1 mr-2 h-10 bg-white text-foreground border border-[#E2E8F0] focus:ring-0 focus:border-primary rounded-xl"
+          className="flex-1 mr-2 h-10 bg-[#FAF9F6] text-foreground border border-[#D1D5DB] focus:ring-0 focus:border-primary rounded-lg"
           disabled={isLoading}
         />
         <Button
           onClick={handleSendMessage}
           disabled={isLoading}
-          className="h-10 w-10 p-0 bg-[#475467] hover:bg-[#3730A3] active:scale-95 transition-all duration-200 ease-in-out rounded-xl"
+          className="h-10 w-10 p-0 bg-accent hover:bg-[#3730A3] active:scale-95 transition-all duration-200 ease-in-out rounded-lg hover:scale-[1.02] hover:shadow-sm"
         >
-          <Send className="h-5 w-5 text-white" />
+          <Send className="h-5 w-5 text-accent-foreground" />
           <span className="sr-only">Send message</span>
         </Button>
       </CardFooter>
