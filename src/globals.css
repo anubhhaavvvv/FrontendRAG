@@ -5,48 +5,38 @@
 @layer base {
   :root {
     /* Base beige/brown colors */
-    --background: 30 20% 90%; /* Light beige */
-    --surface: 30 20% 85%; /* Slightly darker beige */
-    --card: 30 20% 80%; /* Darker beige for cards */
-    --glass: 30 20% 80%; /* Darker beige for glass effect */
+    --background: #FEF9EF;
+    --surface: #F9FBFC;
+    --card: #FFFFFF;
+    --glass: #F9FBFC;
 
     /* Text colors */
-    --foreground: 30 15% 20%; /* Dark brown text */
-    --muted-foreground: 30 15% 40%; /* Medium brown text */
+    --foreground: #374151;
+    --muted-foreground: #6B7280;
 
     /* Message colors */
-    --primary: 30 20% 75%; /* Dark beige for user messages */
-    --primary-foreground: 30 15% 20%; /* Dark brown text on primary */
+    --primary: #4F46E5;
+    --primary-foreground: #FFFFFF;
 
-    --secondary: 30 20% 70%; /* Lighter beige for bot messages */
-    --secondary-foreground: 30 15% 20%; /* Dark brown text on secondary */
+    --secondary: #FFFFFF;
+    --secondary-foreground: #475467;
 
     /* Accent colors */
-    --accent: 30 15% 30%; /* Rich brown for accents */
-    --accent-foreground: 30 20% 95%; /* Light beige text on accent */
+    --accent: #6B7280;
+    --accent-foreground: #4B5563;
 
     /* UI element colors */
-    --popover: 30 20% 85%;
-    --popover-foreground: 30 15% 20%;
+    --popover: #F9FBFC;
+    --popover-foreground: #374151;
 
-    --destructive: 0 20% 30%; /* Dark brown-red for destructive actions */
-    --destructive-foreground: 30 20% 95%;
+    --destructive: #EF4444;
+    --destructive-foreground: #FFFFFF;
 
-    --border: 30 15% 50%; /* Medium brown border */
-    --input: 30 20% 80%; /* Dark beige for inputs */
-    --ring: 30 15% 30%; /* Rich brown ring */
+    --border: #E5E7EB;
+    --input: #FFFFFF;
+    --ring: #E5E7EB;
 
-    --radius: 1rem; /* 16px global */
-
-    /* Sidebar colors (kept for potential future use) */
-    --sidebar-background: 30 20% 85%;
-    --sidebar-foreground: 30 15% 20%;
-    --sidebar-primary: 30 15% 30%;
-    --sidebar-primary-foreground: 30 20% 95%;
-    --sidebar-accent: 30 15% 30%;
-    --sidebar-accent-foreground: 30 20% 95%;
-    --sidebar-border: 30 15% 50%;
-    --sidebar-ring: 30 15% 30%;
+    --radius: 1rem; 
   }
 }
 
@@ -56,7 +46,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-['Inter'] text-[13px] leading-[1.6] antialiased h-screen overflow-hidden;
+    @apply bg-background text-foreground font-['Inter'] text-[14px] leading-[1.6] antialiased h-screen overflow-hidden;
   }
 }
 
@@ -67,6 +57,6 @@
     border: 1px solid rgba(var(--border));
   }
   .glassmorphism-shadow {
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2), inset 0 0 0 1px rgba(255,255,255,0.05);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   }
 }

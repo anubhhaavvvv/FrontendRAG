@@ -13,12 +13,10 @@ interface ChatMessageProps {
 }
 
 const ChatMessage: React.FC<ChatMessageProps> = ({ message, isUser, timestamp }) => {
-  // Function to parse message for citations like [1], [2]
   const renderMessageWithCitations = (text: string) => {
-    const parts = text.split(/(\[\d+\])/g); // Split by citation markers
+    const parts = text.split(/(\[\d+\])/g); 
     return parts.map((part, index) => {
       if (part.match(/^\[\d+\]$/)) {
-        // Render as a badge with hover effect
         return (
           <Badge
             key={index}
@@ -51,8 +49,8 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, isUser, timestamp })
         className={cn(
           "max-w-[70%] p-3 rounded-lg glass-effect glassmorphism-shadow",
           isUser
-            ? "bg-primary text-primary-foreground rounded-br-none" // User messages: card background, primary text
-            : "bg-secondary text-secondary-foreground rounded-bl-none" // Bot messages: surface background, primary text
+            ? "bg-[#4F46E5] text-white rounded-br-none" 
+            : "bg-white text-[#475467] border border-[#E8E8E8] rounded-bl-none" 
         )}
       >
         <p className="text-[13px] flex flex-wrap items-center">
