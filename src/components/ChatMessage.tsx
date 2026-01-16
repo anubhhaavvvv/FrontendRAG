@@ -14,7 +14,7 @@ interface ChatMessageProps {
 
 const ChatMessage: React.FC<ChatMessageProps> = ({ message, isUser, timestamp }) => {
   const renderMessageWithCitations = (text: string) => {
-    const parts = text.split(/(\[\d+\])/g); 
+    const parts = text.split(/(\[\d+\])/g);
     return parts.map((part, index) => {
       if (part.match(/^\[\d+\]$/)) {
         return (
@@ -39,7 +39,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, isUser, timestamp })
       )}
     >
       {!isUser && (
-        <Avatar className="h-8 w-8 rounded-full bg-secondary glass-effect">
+        <Avatar className="h-8 w-8 rounded-full bg-secondary">
           <AvatarFallback className="bg-secondary text-secondary-foreground rounded-full">
             <Bot className="h-5 w-5" />
           </AvatarFallback>
@@ -47,10 +47,10 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, isUser, timestamp })
       )}
       <div
         className={cn(
-          "max-w-[70%] p-3 rounded-lg glass-effect glassmorphism-shadow",
+          "max-w-[70%] p-3 rounded-lg message-shadow",
           isUser
-            ? "bg-[#4F46E5] text-white rounded-br-none" 
-            : "bg-white text-[#475467] border border-[#E8E8E8] rounded-bl-none" 
+            ? "bg-primary text-primary-foreground rounded-br-none"
+            : "bg-secondary text-secondary-foreground border border-border rounded-bl-none"
         )}
       >
         <p className="text-[13px] flex flex-wrap items-center">
@@ -61,7 +61,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, isUser, timestamp })
         </span>
       </div>
       {isUser && (
-        <Avatar className="h-8 w-8 rounded-full bg-primary glass-effect">
+        <Avatar className="h-8 w-8 rounded-full bg-primary">
           <AvatarFallback className="bg-primary text-primary-foreground rounded-full">
             <User className="h-5 w-5" />
           </AvatarFallback>

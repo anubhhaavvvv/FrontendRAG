@@ -4,11 +4,11 @@
 
 @layer base {
   :root {
-    /* Base beige/brown colors */
+    /* Base warm beige/brown colors */
     --background: #FEF9EF;
-    --surface: #F9FBFC;
+    --surface: #FEF9EF;
     --card: #FFFFFF;
-    --glass: #F9FBFC;
+    --glass: rgba(254, 249, 239, 0.8);
 
     /* Text colors */
     --foreground: #374151;
@@ -26,7 +26,7 @@
     --accent-foreground: #4B5563;
 
     /* UI element colors */
-    --popover: #F9FBFC;
+    --popover: #FEF9EF;
     --popover-foreground: #374151;
 
     --destructive: #EF4444;
@@ -36,7 +36,7 @@
     --input: #FFFFFF;
     --ring: #E5E7EB;
 
-    --radius: 1rem; 
+    --radius: 1rem;
   }
 }
 
@@ -52,11 +52,14 @@
 
 @layer utilities {
   .glass-effect {
-    backdrop-filter: blur(20px);
-    background: rgba(var(--glass));
-    border: 1px solid rgba(var(--border));
+    backdrop-filter: blur(10px);
+    background: var(--glass);
+    border: 1px solid rgba(229, 231, 235, 0.3);
   }
   .glassmorphism-shadow {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  .message-shadow {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   }
 }
