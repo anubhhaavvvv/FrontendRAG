@@ -4,43 +4,49 @@
 
 @layer base {
   :root {
-    --background: 240 10% 90%; /* Light beige */
-    --surface: 240 10% 85%; /* Slightly darker beige */
-    --card: 240 10% 80%; /* Dark beige for cards */
-    --glass: 240 10% 80%; /* Dark beige for glass effect */
+    /* Base beige/brown colors */
+    --background: 30 20% 90%; /* Light beige */
+    --surface: 30 20% 85%; /* Slightly darker beige */
+    --card: 30 20% 80%; /* Darker beige for cards */
+    --glass: 30 20% 80%; /* Darker beige for glass effect */
 
-    --foreground: 20 10% 30%; /* Dark brown text */
-    --muted-foreground: 20 10% 40%; /* Medium brown text */
+    /* Text colors */
+    --foreground: 30 15% 20%; /* Dark brown text */
+    --muted-foreground: 30 15% 40%; /* Medium brown text */
 
-    --primary: 240 10% 80%; /* Dark beige for user messages */
-    --primary-foreground: 20 10% 30%; /* Dark brown text on primary */
+    /* Message colors */
+    --primary: 30 20% 75%; /* Dark beige for user messages */
+    --primary-foreground: 30 15% 20%; /* Dark brown text on primary */
 
-    --secondary: 240 10% 75%; /* Lighter beige for bot messages */
-    --secondary-foreground: 20 10% 30%; /* Dark brown text on secondary */
+    --secondary: 30 20% 70%; /* Lighter beige for bot messages */
+    --secondary-foreground: 30 15% 20%; /* Dark brown text on secondary */
 
-    --accent: 20 10% 40%; /* Brown for accents */
-    --accent-foreground: 240 10% 95%; /* Light beige text on accent */
+    /* Accent colors */
+    --accent: 30 15% 30%; /* Rich brown for accents */
+    --accent-foreground: 30 20% 95%; /* Light beige text on accent */
 
-    --popover: 240 10% 85%;
-    --popover-foreground: 20 10% 30%;
+    /* UI element colors */
+    --popover: 30 20% 85%;
+    --popover-foreground: 30 15% 20%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 20% 30%; /* Dark brown-red for destructive actions */
+    --destructive-foreground: 30 20% 95%;
 
-    --border: 20 10% 50%; /* Medium brown border */
-    --input: 240 10% 80%; /* Dark beige for inputs */
-    --ring: 20 10% 40%; /* Brown ring */
+    --border: 30 15% 50%; /* Medium brown border */
+    --input: 30 20% 80%; /* Dark beige for inputs */
+    --ring: 30 15% 30%; /* Rich brown ring */
 
     --radius: 1rem; /* 16px global */
 
-    --sidebar-background: 240 10% 85%;
-    --sidebar-foreground: 20 10% 30%;
-    --sidebar-primary: 20 10% 40%;
-    --sidebar-primary-foreground: 240 10% 95%;
-    --sidebar-accent: 20 10% 40%;
-    --sidebar-accent-foreground: 240 10% 95%;
-    --sidebar-border: 20 10% 50%;
-    --sidebar-ring: 20 10% 40%;
+    /* Sidebar colors (kept for potential future use) */
+    --sidebar-background: 30 20% 85%;
+    --sidebar-foreground: 30 15% 20%;
+    --sidebar-primary: 30 15% 30%;
+    --sidebar-primary-foreground: 30 20% 95%;
+    --sidebar-accent: 30 15% 30%;
+    --sidebar-accent-foreground: 30 20% 95%;
+    --sidebar-border: 30 15% 50%;
+    --sidebar-ring: 30 15% 30%;
   }
 }
 
