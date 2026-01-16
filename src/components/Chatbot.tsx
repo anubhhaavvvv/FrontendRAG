@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import ChatMessage from "./ChatMessage";
-import { Send, Bot, Minus, X } from "lucide-react";
+import { Send, Bot } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { showError, showLoading, dismissToast } from "@/utils/toast";
 
@@ -86,23 +86,10 @@ const Chatbot: React.FC = () => {
 
   return (
     <Card className="w-full h-full flex flex-col rounded-lg border border-border bg-card text-foreground shadow-lg">
-      <CardHeader className="flex flex-row items-center justify-between h-[60px] border-b border-[#E5E7EB] p-4 bg-white">
-        <div className="flex items-center gap-2">
-          <CardTitle className="text-lg font-semibold text-[#374151]">RAG Assistant</CardTitle>
-          <div className="h-2 w-2 rounded-full bg-green-500" title="Online"></div>
-        </div>
-        <div className="flex items-center gap-1">
-          <Button variant="ghost" size="icon" className="h-8 w-8 text-[#6B7280] hover:bg-muted">
-            <Minus className="h-5 w-5" />
-            <span className="sr-only">Minimize</span>
-          </Button>
-          <Button variant="ghost" size="icon" className="h-8 w-8 text-[#6B7280] hover:bg-muted">
-            <X className="h-5 w-5" />
-            <span className="sr-only">Close</span>
-          </Button>
-        </div>
+      <CardHeader className="flex flex-row items-center justify-center h-[60px] border-b border-border p-4 bg-card">
+        <CardTitle className="text-lg font-semibold text-foreground">AI Assistant</CardTitle>
       </CardHeader>
-      <CardContent className="flex-1 overflow-hidden p-4 md:p-6 bg-background">
+      <CardContent className="flex-1 overflow-hidden p-4 md:p-6 bg-transparent">
         <ScrollArea className="h-full pr-4">
           {messages.map((msg, index) => (
             <ChatMessage key={index} message={msg.text} isUser={msg.isUser} timestamp={msg.timestamp} />
@@ -127,20 +114,20 @@ const Chatbot: React.FC = () => {
           <div ref={messagesEndRef} />
         </ScrollArea>
       </CardContent>
-      <CardFooter className="sticky bottom-0 flex p-4 h-[70px] border-t border-[#E5E7EB] bg-white">
+      <CardFooter className="sticky bottom-0 flex p-4 h-[70px] border-t border-border bg-card">
         <Input
           type="text"
           placeholder="Type your message..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={handleKeyPress}
-          className="flex-1 mr-2 h-10 bg-white text-foreground border border-[#E5E7EB] focus:ring-0 focus:border-primary rounded-lg"
+          className="flex-1 mr-2 h-10 bg-input text-foreground border border-border focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-0 focus-visible:border-transparent rounded-lg"
           disabled={isLoading}
         />
         <Button
           onClick={handleSendMessage}
           disabled={isLoading}
-          className="h-10 w-10 p-0 bg-accent hover:bg-blue-700 active:scale-95 transition-all duration-200 ease-in-out rounded-lg hover:scale-[1.02] hover:shadow-sm"
+          className="h-10 w-10 p-0 bg-accent hover:bg-accent/80 active:scale-95 transition-all duration-200 ease-in-out rounded-lg hover:scale-[1.02] hover:shadow-sm"
         >
           <Send className="h-5 w-5 text-accent-foreground" />
           <span className="sr-only">Send message</span>

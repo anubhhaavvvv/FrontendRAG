@@ -23,7 +23,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, isUser, timestamp })
           <Badge
             key={index}
             variant="outline"
-            className="ml-1 px-1.5 py-0.5 text-xs font-normal bg-muted text-muted-foreground border-muted-foreground/20 hover:underline hover:text-primary cursor-pointer"
+            className="ml-1 px-1.5 py-0.5 text-xs font-normal bg-muted text-muted-foreground border-muted-foreground/20 hover:underline hover:text-accent cursor-pointer"
           >
             {part}
           </Badge>
@@ -51,8 +51,8 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, isUser, timestamp })
         className={cn(
           "max-w-[70%] p-3 rounded-lg shadow-[0_1px_3px_rgba(0,0,0,0.05)]",
           isUser
-            ? "bg-primary text-primary-foreground rounded-br-none" // User messages: soft indigo background, white text
-            : "bg-secondary text-secondary-foreground border border-transparent rounded-bl-none shadow-sm shadow-left" // Bot messages: white background, light gray border, dark text
+            ? "bg-primary text-primary-foreground rounded-br-none" // User messages: dark grey background, white text
+            : "bg-secondary text-secondary-foreground border border-transparent rounded-bl-none" // Bot messages: dark grey background, light grey text
         )}
       >
         <p className="text-sm flex flex-wrap items-center">
