@@ -4,35 +4,35 @@
 
 @layer base {
   :root {
-    --background: 220 10% 3%; /* Very deep, rich dark blue/black */
-    --foreground: 210 40% 98%; /* Off-white */
+    --background: 0 0% 0%; /* Pure Black */
+    --foreground: 120 60% 70%; /* Classic Terminal Green */
 
-    --card: 220 10% 3%; /* Same as background for subtle glass effect */
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 0%; /* Pure Black */
+    --card-foreground: 120 60% 70%;
 
-    --popover: 220 10% 3%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 0%;
+    --popover-foreground: 120 60% 70%;
 
-    --primary: 220 70% 40%; /* A more subdued, professional blue/purple */
+    --primary: 120 60% 50%; /* A slightly darker green for accents */
     --primary-foreground: 0 0% 100%; /* White */
 
     --secondary: 217.2 32.6% 17.5%; /* Dark gray */
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217.2 32.6% 17.5%; /* Dark gray */
-    --muted-foreground: 215 20.2% 65.1%; /* Lighter gray */
+    --muted: 0 0% 10%; /* Very dark gray for muted elements */
+    --muted-foreground: 120 60% 70%; /* Terminal Green */
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 120 60% 50%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%; /* Dark gray border */
-    --input: 217.2 32.6% 17.5%; /* Dark gray input */
-    --ring: 212.7 26.8% 83.9%;
+    --border: 120 60% 50%; /* Terminal Green border */
+    --input: 0 0% 10%; /* Dark gray input background */
+    --ring: 120 60% 50%; /* Terminal Green ring */
 
-    --radius: 0.5rem;
+    --radius: 0rem; /* Sharp corners for terminal feel */
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -51,6 +51,6 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-mono; /* Apply monospace font */
   }
 }
