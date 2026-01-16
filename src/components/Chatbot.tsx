@@ -69,11 +69,11 @@ const Chatbot: React.FC = () => {
   };
 
   return (
-    <Card className="w-full max-w-2xl h-[80vh] flex flex-col shadow-xl rounded-lg border border-gray-700 bg-background/10 backdrop-blur-md">
-      <CardHeader className="border-b border-gray-700 p-4 bg-card/10">
+    <Card className="w-full max-w-2xl h-[80vh] flex flex-col shadow-2xl rounded-lg border border-primary/30 bg-background/20 backdrop-blur-xl transition-all duration-300 hover:shadow-primary/20">
+      <CardHeader className="border-b border-primary/20 p-4 bg-card/20">
         <CardTitle className="text-lg font-semibold text-center text-foreground">RAG Chatbot</CardTitle>
       </CardHeader>
-      <CardContent className="flex-1 overflow-hidden p-4 bg-background/5">
+      <CardContent className="flex-1 overflow-hidden p-4 bg-background/10">
         <ScrollArea className="h-full pr-4">
           {messages.map((msg, index) => (
             <ChatMessage key={index} message={msg.text} isUser={msg.isUser} />
@@ -98,20 +98,20 @@ const Chatbot: React.FC = () => {
           <div ref={messagesEndRef} />
         </ScrollArea>
       </CardContent>
-      <CardFooter className="flex p-4 border-t border-gray-700 bg-card/10">
+      <CardFooter className="flex p-4 border-t border-primary/20 bg-card/20">
         <Input
           type="text"
           placeholder="Type your message..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={handleKeyPress}
-          className="flex-1 mr-2 h-10 bg-input/50 text-foreground border border-gray-600 focus:ring-2 focus:ring-primary"
+          className="flex-1 mr-2 h-10 bg-input/40 text-foreground border border-primary/30 focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all duration-200"
           disabled={isLoading}
         />
         <Button
           onClick={handleSendMessage}
           disabled={isLoading}
-          className="h-10 w-10 p-0 bg-primary hover:bg-primary/90 transition-all duration-200 ease-in-out"
+          className="h-10 w-10 p-0 bg-primary hover:bg-primary/80 active:scale-95 transition-all duration-200 ease-in-out"
         >
           <Send className="h-5 w-5 text-primary-foreground" />
           <span className="sr-only">Send message</span>
