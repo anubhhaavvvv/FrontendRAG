@@ -68,33 +68,47 @@ const Chatbot: React.FC = () => {
   };
 
   return (
-    <Card className="w-full max-w-2xl h-[80vh] flex flex-col">
-      <CardHeader>
-        <CardTitle className="text-center">RAG Chatbot</CardTitle>
+    <Card className="w-full max-w-2xl h-[80vh] flex flex-col shadow-lg rounded-lg">
+      <CardHeader className="border-b p-4">
+        <CardTitle className="text-lg font-semibold text-center">RAG Chatbot</CardTitle>
       </CardHeader>
-      <CardContent className="flex-1 overflow-hidden p-4">
+      <CardContent className="flex-1 overflow-hidden p-4 bg-background">
         <ScrollArea className="h-full pr-4">
           {messages.map((msg, index) => (
             <ChatMessage key={index} message={msg.text} isUser={msg.isUser} />
           ))}
           {isLoading && (
-            <ChatMessage message="Bot is typing..." isUser={false} />
+            <div className="flex w-full mb-4 items-start gap-3 justify-start">
+              <Avatar className="h-8 w-8">
+                <AvatarFallback className="bg-muted">
+                  <Bot className="h-5 w-5 text-muted-foreground" />
+                </AvatarFallback>
+              </Avatar>
+              <div className="max-w-[70%] p-3 rounded-xl bg-muted text-muted-foreground rounded-bl-none">
+                <div className="flex items-center space-x-1">
+                  <span className="sr-only">Bot is typing</span>
+                  <div className="h-2 w-2 bg-muted-foreground rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+                  <div className="h-2 w-2 bg-muted-foreground rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+                  <div className="h-2 w-2 bg-muted-foreground rounded-full animate-bounce"></div>
+                </div>
+              </div>
+            </div>
           )}
           <div ref={messagesEndRef} />
         </ScrollArea>
       </CardContent>
-      <CardFooter className="flex p-4 border-t">
+      <CardFooter className="flex p-4 border-t bg-card">
         <Input
           type="text"
           placeholder="Type your message..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={handleKeyPress}
-          className="flex-1 mr-2"
+          className="flex-1 mr-2 h-10"
           disabled={isLoading}
         />
-        <Button onClick={handleSendMessage} disabled={isLoading}>
-          <Send className="h-4 w-4" />
+        <Button onClick={handleSendMessage} disabled={isLoading} className="h-10 w-10 p-0">
+          <Send className="h-5 w-5" />
           <span className="sr-only">Send message</span>
         </Button>
       </CardFooter>
