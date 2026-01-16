@@ -23,7 +23,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, isUser, timestamp })
           <Badge
             key={index}
             variant="outline"
-            className="ml-1 px-1.5 py-0.5 text-xs font-normal bg-muted text-muted-foreground border-muted-foreground/20 hover:underline hover:text-primary cursor-pointer"
+            className="ml-1 px-1.5 py-0.5 text-xs font-normal bg-muted text-muted-foreground border-muted-foreground/20 hover:underline hover:text-accent cursor-pointer"
           >
             {part}
           </Badge>
@@ -41,29 +41,29 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, isUser, timestamp })
       )}
     >
       {!isUser && (
-        <Avatar className="h-8 w-8 rounded-full border border-border">
-          <AvatarFallback className="bg-secondary text-secondary-foreground rounded-full">
+        <Avatar className="h-8 w-8 rounded-full bg-card">
+          <AvatarFallback className="bg-card text-card-foreground rounded-full">
             <Bot className="h-5 w-5" />
           </AvatarFallback>
         </Avatar>
       )}
       <div
         className={cn(
-          "max-w-[70%] p-3 rounded-lg shadow-[0_1px_3px_rgba(0,0,0,0.05)]",
+          "max-w-[70%] p-3 rounded-lg",
           isUser
-            ? "bg-primary text-primary-foreground rounded-br-none" // User messages: soft indigo background, white text
-            : "bg-secondary text-secondary-foreground border border-transparent rounded-bl-none shadow-sm shadow-left" // Bot messages: white background, light gray border, dark text
+            ? "bg-primary text-primary-foreground" // User messages: dark gray background, white text
+            : "bg-secondary text-secondary-foreground" // Bot messages: slightly lighter dark gray background, light gray text
         )}
       >
         <p className="text-sm flex flex-wrap items-center">
           {renderMessageWithCitations(message)}
         </p>
-        <span className={cn("block text-[12px] text-muted-foreground mt-1 font-medium", isUser ? "text-right" : "text-left")}>
+        <span className={cn("block text-[12px] text-muted-foreground mt-1 font-normal", isUser ? "text-right" : "text-left")}>
           {timestamp}
         </span>
       </div>
       {isUser && (
-        <Avatar className="h-8 w-8 rounded-full border border-border">
+        <Avatar className="h-8 w-8 rounded-full bg-primary">
           <AvatarFallback className="bg-primary text-primary-foreground rounded-full">
             <User className="h-5 w-5" />
           </AvatarFallback>

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import ChatMessage from "./ChatMessage";
-import { Send, Bot, Minus, X } from "lucide-react";
+import { Send, Bot } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { showError, showLoading, dismissToast } from "@/utils/toast";
 
@@ -85,36 +85,23 @@ const Chatbot: React.FC = () => {
   };
 
   return (
-    <Card className="w-full h-full flex flex-col rounded-lg border border-border bg-card text-foreground shadow-lg">
-      <CardHeader className="flex flex-row items-center justify-between h-[60px] border-b border-[#E5E7EB] p-4 bg-white">
-        <div className="flex items-center gap-2">
-          <CardTitle className="text-lg font-semibold text-[#374151]">RAG Assistant</CardTitle>
-          <div className="h-2 w-2 rounded-full bg-green-500" title="Online"></div>
-        </div>
-        <div className="flex items-center gap-1">
-          <Button variant="ghost" size="icon" className="h-8 w-8 text-[#6B7280] hover:bg-muted">
-            <Minus className="h-5 w-5" />
-            <span className="sr-only">Minimize</span>
-          </Button>
-          <Button variant="ghost" size="icon" className="h-8 w-8 text-[#6B7280] hover:bg-muted">
-            <X className="h-5 w-5" />
-            <span className="sr-only">Close</span>
-          </Button>
-        </div>
+    <Card className="w-full h-full flex flex-col rounded-lg bg-transparent text-foreground shadow-none">
+      <CardHeader className="flex flex-row items-center justify-center h-[60px] p-4 bg-gradient-to-b from-[#0F0F23] to-[#1A1B2E] text-white">
+        <CardTitle className="text-lg font-semibold">AI Assistant</CardTitle>
       </CardHeader>
-      <CardContent className="flex-1 overflow-hidden p-4 md:p-6 bg-background">
+      <CardContent className="flex-1 overflow-hidden p-4 md:p-6 bg-transparent">
         <ScrollArea className="h-full pr-4">
           {messages.map((msg, index) => (
             <ChatMessage key={index} message={msg.text} isUser={msg.isUser} timestamp={msg.timestamp} />
           ))}
           {isLoading && (
             <div className="flex w-full mb-4 items-start gap-3 justify-start">
-              <Avatar className="h-8 w-8 rounded-full border border-border">
-                <AvatarFallback className="bg-secondary text-secondary-foreground rounded-full">
+              <Avatar className="h-8 w-8 rounded-full border border-border bg-card">
+                <AvatarFallback className="bg-card text-card-foreground rounded-full">
                   <Bot className="h-5 w-5" />
                 </AvatarFallback>
               </Avatar>
-              <div className="max-w-[70%] p-3 rounded-lg bg-secondary text-secondary-foreground rounded-bl-none shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
+              <div className="max-w-[70%] p-3 rounded-lg bg-card text-card-foreground rounded-bl-none">
                 <div className="flex items-center space-x-2">
                   <span className="text-sm">Typing</span>
                   <div className="h-2 w-2 bg-muted-foreground rounded-full animate-bounce [animation-delay:-0.3s]"></div>
@@ -127,20 +114,20 @@ const Chatbot: React.FC = () => {
           <div ref={messagesEndRef} />
         </ScrollArea>
       </CardContent>
-      <CardFooter className="sticky bottom-0 flex p-4 h-[70px] border-t border-[#E5E7EB] bg-white">
+      <CardFooter className="sticky bottom-0 flex p-4 h-[70px] bg-gradient-to-t from-[#1A1B2E] to-[#0F0F23]">
         <Input
           type="text"
           placeholder="Type your message..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={handleKeyPress}
-          className="flex-1 mr-2 h-10 bg-white text-foreground border border-[#E5E7EB] focus:ring-0 focus:border-primary rounded-lg"
+          className="flex-1 mr-2 h-10 bg-input text-foreground border-none focus:ring-2 focus:ring-accent focus:ring-offset-0 rounded-lg"
           disabled={isLoading}
         />
         <Button
           onClick={handleSendMessage}
           disabled={isLoading}
-          className="h-10 w-10 p-0 bg-accent hover:bg-blue-700 active:scale-95 transition-all duration-200 ease-in-out rounded-lg hover:scale-[1.02] hover:shadow-sm"
+          className="h-10 w-10 p-0 bg-input hover:bg-input/80 active:scale-95 transition-all duration-200 ease-in-out rounded-lg hover:scale-[1.02] hover:shadow-sm"
         >
           <Send className="h-5 w-5 text-accent-foreground" />
           <span className="sr-only">Send message</span>

@@ -4,44 +4,44 @@
 
 @layer base {
   :root {
-    --background: 210 17% 98%; /* #FAFBFC (main background) */
-    --foreground: 217 19% 20%; /* #374151 (primary text) */
+    --background: 240 10% 9%; /* Base for gradient #0F0F23 */
+    --foreground: 0 0% 100%; /* White */
 
-    --card: 0 0% 100%; /* #FFFFFF (chatbot card background) */
-    --card-foreground: 217 19% 20%; /* #374151 */
+    --card: 240 5% 23%; /* #343541 (bot bubble background) */
+    --card-foreground: 240 10% 89%; /* #D9D9E3 (bot text) */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 217 19% 20%;
+    --popover: 240 5% 23%;
+    --popover-foreground: 240 10% 89%;
 
-    --primary: 217 91% 59%; /* #3B82F6 (user message bubble, accent) */
+    --primary: 240 5% 27%; /* #444654 (user message bubble) */
     --primary-foreground: 0 0% 100%; /* White */
 
-    --secondary: 210 17% 98%; /* #F8F9FA (bot message bubble background) */
-    --secondary-foreground: 217 19% 20%; /* #374151 (bot text) */
+    --secondary: 240 5% 23%; /* #343541 (bot message bubble background) */
+    --secondary-foreground: 240 10% 89%; /* #D9D9E3 (bot text) */
 
-    --muted: 217 19% 64%; /* #6B7280 (for typing dots, timestamps) */
-    --muted-foreground: 217 19% 64%; /* #6B7280 */
+    --muted: 240 5% 56%; /* #8E8E9E (for typing dots, timestamps) */
+    --muted-foreground: 240 5% 56%; /* #8E8E9E */
 
-    --accent: 217 91% 59%; /* #3B82F6 (send button background) */
+    --accent: 165 82% 35%; /* #10A37F (focus ring color) */
     --accent-foreground: 0 0% 100%; /* White */
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 210 20% 92%; /* #E5E7EB (input border) */
-    --input: 0 0% 100%; /* #FFFFFF (input background) */
-    --ring: 217 91% 59%; /* #3B82F6 (focus ring) */
+    --border: 240 5% 13%; /* #202123 (subtle borders) */
+    --input: 240 5% 25%; /* #40414F (input background) */
+    --ring: 165 82% 35%; /* #10A37F (focus ring) */
 
-    --radius: 0.5rem; /* rounded-lg (8px) */
+    --radius: 0.5rem; /* 8px for rounded-lg */
 
-    --sidebar-background: 210 17% 98%;
-    --sidebar-foreground: 217 19% 20%;
-    --sidebar-primary: 217 91% 59%;
+    --sidebar-background: 240 10% 9%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 240 5% 27%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 217 91% 59%;
+    --sidebar-accent: 165 82% 35%;
     --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 210 20% 92%;
-    --sidebar-ring: 217 91% 59%;
+    --sidebar-border: 240 5% 13%;
+    --sidebar-ring: 165 82% 35%;
   }
 }
 
@@ -51,6 +51,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-['Inter'] text-[14px] leading-[1.6] antialiased h-screen overflow-hidden;
+    @apply text-foreground font-['SF_Mono_Regular','JetBrains_Mono','ui-monospace','SFMono-Regular','Menlo','Monaco','Consolas','Liberation_Mono','Courier_New',monospace] text-[15px] leading-[1.6] antialiased h-screen overflow-hidden;
+    background: linear-gradient(180deg, #0F0F23 0%, #1A1B2E 100%);
   }
 }
