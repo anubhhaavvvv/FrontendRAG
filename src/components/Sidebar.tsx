@@ -15,7 +15,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed = false }) => {
   const chatHistory = [
     { id: "1", title: "Dashboard Overview" },
     { id: "2", title: "Q3 Sales Report" },
-    { id: "3", title: "Marketing Campaign Analysis" },
+    { id: "3", "title": "Marketing Campaign Analysis" },
     { id: "4", title: "Customer Feedback Summary" },
     { id: "5", title: "Product Launch Strategy" },
     { id: "6", title: "Financial Projections 2024" },
@@ -33,7 +33,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed = false }) => {
       )}
     >
       <div className={cn("flex items-center mb-6", isCollapsed ? "justify-center" : "justify-between")}>
-        {!isCollapsed && <h2 className="text-lg font-bold text-foreground">RAG Chatbot</h2>}
+        {!isCollapsed && <h2 className="text-[14px] font-bold text-foreground">RAG Chatbot</h2>}
         <Button variant="ghost" size="icon" className="h-8 w-8 text-foreground/80 hover:bg-accent/20 hover:text-accent">
           <Plus className="h-5 w-5" />
           <span className="sr-only">New Chat</span>
